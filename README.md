@@ -1,0 +1,1 @@
+## Installation```Metacello new	repository: 'github://feenkcom/gt4python:master/src';	baseline: 'GToolkit4Python';	load```
