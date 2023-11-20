@@ -57,6 +57,7 @@ GtPyinstrumentProfiler >> createTally: aDictionary [
 GtPyinstrumentProfiler >> fileFor: aDictionary [
 	| fullname |
 	fullname := aDictionary at: 'file_path'.
+	fullname trim isEmpty ifTrue: [ fullname := aDictionary at: 'file_path_short' ].
 	^ fileCache
 		at: fullname
 		ifAbsentPut: [ GtTallyPythonFile new
