@@ -71,9 +71,14 @@ GtPyinstrumentProfiler >> fileFor: aDictionary [
 GtPyinstrumentProfiler >> importProfile: aFileRef forProject: projFileRef [
 	| json |
 	model := GtLSPPythonModel onDirectory: projFileRef asFileReference.
-	fileCache := Dictionary new.
 	json := STONJSON fromString: aFileRef asFileReference contents.
 	^ self createTally: (json at: 'root_frame')
+]
+
+{ #category : #accessing }
+GtPyinstrumentProfiler >> initialize [
+	super initialize.
+	fileCache := Dictionary new
 ]
 
 { #category : #accessing }
@@ -83,4 +88,14 @@ GtPyinstrumentProfiler >> lookupFileInModel: aString [
 			ifTrue: [ model filename / aString ]
 			ifFalse: [ aString asFileReference ].
 	^ (model fileFor: ref) ifNil: [ model fileFor: model filename / aString ]
+]
+
+{ #category : #accessing }
+GtPyinstrumentProfiler >> model [
+	^ model
+]
+
+{ #category : #accessing }
+GtPyinstrumentProfiler >> model: anObject [
+	model := anObject
 ]
