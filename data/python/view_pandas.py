@@ -1,5 +1,6 @@
 import pandas
 
+from gtoolkit.gt import gtView
 
 #
 # This file contains GToolkit Remote Phlow gtView definitions
@@ -11,6 +12,7 @@ import pandas
 # pandas.DataFrame.gtViewColumns
 #
 
+@gtView
 def dataframe_gt_view_columns(self, builder):
     clist = builder.columnedList()
     clist.title('Columns')
@@ -30,6 +32,7 @@ setattr(pandas.DataFrame, 'gtViewColumns', dataframe_gt_view_columns)
 # pandas.DataFrame.gtViewTable
 #
 
+@gtView
 def dataframe_gt_view_table(self, builder):
     if self.empty:
         return builder.empty()
@@ -53,6 +56,7 @@ setattr(pandas.DataFrame, 'gtViewTable', dataframe_gt_view_table)
 # pandas.DataFrame.gtViewHead
 #
 
+@gtView
 def dataframe_gt_view_head(self, builder):
     if self.empty:
         return builder.empty()
@@ -73,6 +77,7 @@ setattr(pandas.DataFrame, 'gtViewHead', dataframe_gt_view_head)
 # pandas.DataFrame.gtViewTail
 #
 
+@gtView
 def dataframe_gt_view_tail(self, builder):
     if self.empty:
         return builder.empty()
@@ -93,6 +98,7 @@ setattr(pandas.DataFrame, 'gtViewTail', dataframe_gt_view_tail)
 # pandas.DataFrame.gtViewSummary
 #
 
+@gtView
 def dataframe_gt_view_summary(self, builder):
     forward = builder.forward()
     forward.title('Summary')
@@ -109,6 +115,7 @@ setattr(pandas.DataFrame, 'gtViewSummary', dataframe_gt_view_summary)
 # pandas.Series.gtViewSeries
 #
 
+@gtView
 def series_gt_view_series(self, builder):
     if self.empty:
         return builder.empty()
@@ -131,6 +138,7 @@ setattr(pandas.Series, 'gtViewSeries', series_gt_view_series)
 # pandas.Series.gtViewHead
 #
 
+@gtView
 def series_gt_view_head(self, builder):
     if self.empty:
         return builder.empty()
@@ -151,6 +159,7 @@ setattr(pandas.Series, 'gtViewHead', series_gt_view_head)
 # pandas.Series.gtViewTail
 #
 
+@gtView
 def series_gt_view_tail(self, builder):
     if self.empty:
         return builder.empty()
@@ -171,6 +180,7 @@ setattr(pandas.Series, 'gtViewTail', series_gt_view_tail)
 # pandas.Series.gtViewSummary
 #
 
+@gtView
 def series_gt_view_summary(self, builder):
     forward = builder.forward()
     forward.title('Summary')
