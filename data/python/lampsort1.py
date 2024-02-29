@@ -1,7 +1,6 @@
 from gtoolkit_bridge.PythonBridge.telemetry import gtTrace
 
 class LampSort:
-
 	def __init__(self, data):
 		self.data = data
 
