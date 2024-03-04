@@ -22,6 +22,12 @@ class LampSort:
 	def __init__(self, data):
 		self.data = data
 
+	def __copy__(self):
+		return LampSort(self.data.copy())
+
+	def __repr__(self):
+		return 'LampSort'+(self.data.__repr__())
+
 	@gtTrace
 	def sort(self):
 		intervals = set([range(0, len(self.data))])
