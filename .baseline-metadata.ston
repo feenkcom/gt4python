@@ -1,6 +1,6 @@
 {
 	"repositories" : {
-		"github://feenkcom/gtoolkit-world/src" : "v0.6.804",
+		"github://feenkcom/gtoolkit-world/src" : "v0.6.805",
 		"github://feenkcom/gt4lsp/src" : "v0.6.299"
 	}
 }
