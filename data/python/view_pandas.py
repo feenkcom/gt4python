@@ -1,6 +1,6 @@
 import pandas
 
-from gtoolkit.gt import gtView
+from gtoolkit_bridge import gtView
 
 #
 # This file contains GToolkit Remote Phlow gtView definitions
