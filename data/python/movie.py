@@ -82,6 +82,7 @@ class MovieCollection:
 		table.column("Release date", lambda index: str(self.df.at[index, "Release Date"]))
 		table.column("Directors", lambda index: str(self.df.at[index, "Directors"]))
 		table.column("Genres", lambda index: str(self.df.at[index, "Genres"]))
+		table.set_accessor(lambda each: Movie(self.df.loc[list(self.df.index)[each]]))
 		return table
 		
 	def gtViewMoviesDetails(self, aBuilder):
