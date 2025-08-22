@@ -27,19 +27,11 @@ import time:        19 |         19 |   marshal
 import time:       131 |        131 |   posix
 import time:       363 |        590 | _frozen_importlib_external
 import time:       450 |        450 |   time
-..."	
-	| lineParser root stack lines |
-	lines := aString lines allButFirst reversed select: [:each | each beginsWith: 'import time'].
-	lineParser := ('import time:' asPParser trim
-			, #digit asPParser plus flatten trim , '|' asPParser trim
-			, #digit asPParser plus flatten trim , '|' asPParser , #space asPParser
-			, #space asPParser star , #endOfInput asPParser negate plus flatten)
-			==> [ :t | 
-				GtPyImportTimePackage new
-					localTime: (t at: 2) asNumber;
-					cumulativeTime: (t at: 4) asNumber;
-					nesting: (t at: 7) size / 2;
-					name: (t at: 8) ].
+..."
+
+	| root stack lines |
+	lines := aString lines allButFirst reversed
+			select: [ :each | each beginsWith: 'import time' ].
 	root := GtPyImportTimePackage new
 			localTime: 0;
 			cumulativeTime: -1;
@@ -50,11 +42,25 @@ import time:       450 |        450 |   time
 	lines
 		do: [ :each | 
 			| newPackage |
-			newPackage := lineParser parse: each.
+			newPackage := self lineParser parse: each.
 			[ newPackage nesting <= stack top nesting ] whileTrue: [ stack pop ].
 			stack top addChild: newPackage.
 			stack push: newPackage ].
 	^ root
+]
+
+{ #category : #'as yet unclassified' }
+GtPyImportTimePackage class >> lineParser [
+	^ ('import time:' asPParser trim , #digit asPParser plus flatten trim
+		, '|' asPParser trim , #digit asPParser plus flatten trim , '|' asPParser
+		, #space asPParser , #space asPParser star
+		, #endOfInput asPParser negate plus flatten)
+		==> [ :t | 
+			GtPyImportTimePackage new
+				localTime: (t at: 2) asNumber;
+				cumulativeTime: (t at: 4) asNumber;
+				nesting: (t at: 7) size / 2;
+				name: (t at: 8) ]
 ]
 
 { #category : #'as yet unclassified' }
