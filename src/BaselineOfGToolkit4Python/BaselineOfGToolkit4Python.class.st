@@ -10,10 +10,10 @@ BaselineOfGToolkit4Python >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitWorld' with: [
-				spec repository: 'github://feenkcom/gtoolkit-world:v0.7.158/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-world:v0.7.159/src' ].
 		spec
 			baseline: 'GToolkit4LSP' with: [
-				spec repository: 'github://feenkcom/gt4lsp:v0.7.77/src' ].
+				spec repository: 'github://feenkcom/gt4lsp:v0.7.78/src' ].
 
 		spec package: 'GToolkit4Python' with: [
 			spec requires: #(#GToolkit4LSP #GToolkitWorld) ].
